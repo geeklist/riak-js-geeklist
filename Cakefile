@@ -2,7 +2,7 @@
 
 handleError = (err) ->
   if err
-    console.log "\n\033[1;36m=>\033[1;37m Remember that you need: coffee-script@0.9.4 and vows@0.5.2\033[0;37m\n"
+    console.log "\nRemember that you need: coffee-script@0.9.4 and vows@0.5.2\n"
     console.log err.stack
 
 print = (data) -> console.log data.toString().trim()
@@ -12,7 +12,7 @@ print = (data) -> console.log data.toString().trim()
 option '-s', '--spec', 'Use Vows spec mode'
 
 task 'build', 'Compile riak-js Coffeescript source to Javascript', ->
-  exec 'mkdir -p lib && ln -sf ../src/riak.desc lib && coffee -c -o lib src', handleError
+  exec 'mkdir -p lib && ln -sf ../src/riak.desc lib && `npm bin`/coffee -c -o lib src', handleError
 
 task 'clean', 'Remove generated Javascripts', ->
   exec 'rm -fr lib', handleError
